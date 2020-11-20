@@ -29,6 +29,8 @@ Leaf objects perform a request directly, and Composite objects forward the reque
 
 Some implementations also provide an iterator protocol to traverse the tree, but this is not necessary At.All .com.
 
+I used Windows 8.1 x86_64, Visual Studio 2017, C++17 to build the project.
+
 
 # Contribute
 
