@@ -2,6 +2,7 @@
 
 #include <vector>
 
+
 // a common interface for all the leaves as well as the Composite
 class IComponent
 {
@@ -15,16 +16,8 @@ class Leaf1
 {
 	int m_value;
 public:
-	Leaf1( int value )
-		:
-		m_value( value )
-	{}
-
-	void traverse() override
-	{
-		std::wcout << L"Leaf1:"
-			<< m_value << L' ';
-	}
+	Leaf1( int value );
+	void traverse() override;
 };
 
 class Leaf2
@@ -32,16 +25,8 @@ class Leaf2
 {
 	int m_value;
 public:
-	Leaf2( int value )
-		:
-		m_value( value )
-	{}
-
-	void traverse() override
-	{
-		std::wcout << L"Leaf2:"
-			<< m_value << L' ';
-	}
+	Leaf2( int value );
+	void traverse() override;
 };
 
 class Leaf3
@@ -49,16 +34,8 @@ class Leaf3
 {
 	int m_value;
 public:
-	Leaf3( int value )
-		:
-		m_value( value )
-	{}
-
-	void traverse() override
-	{
-		std::wcout << L"Leaf3:"
-			<< m_value << L' ';
-	}
+	Leaf3( int value );
+	void traverse() override;
 };
 
 
@@ -68,6 +45,7 @@ class Composite
 	std::vector<std::unique_ptr<IComponent>> m_children;
 public:
 	Composite() = default;
+	virtual ~Composite() = default;
 	Composite( const Composite& rhs ) = default;
 	Composite& operator=( const Composite& rhs ) = delete;
 	Composite( Composite&& rhs ) noexcept;
@@ -76,32 +54,3 @@ public:
 	void add( std::unique_ptr<IComponent> element );
 	void traverse() override;
 };
-
-Composite::Composite( Composite&& rhs ) noexcept
-	:
-	m_children{ std::move( rhs.m_children ) }
-{}
-
-Composite& Composite::operator=( Composite&& rhs ) noexcept
-{
-	if ( this != &rhs )
-	{
-		Composite temp( std::move( rhs ) );
-		std::swap( this->m_children, temp.m_children );
-	}
-	return *this;
-}
-
-void Composite::add( std::unique_ptr<IComponent> element )
-{
-	m_children.emplace_back( std::move( element ) );
-}
-
-void Composite::traverse()
-{
-	for ( auto& i : m_children )
-	{
-		// Use polymorphism to delegate to children
-		i->traverse();
-	}
-}

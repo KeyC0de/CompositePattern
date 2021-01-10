@@ -18,15 +18,12 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="leak_checker.cpp">
+    <ClCompile Include="composite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="composite.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="leak_checker.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,5 +1,4 @@
 #include <iostream>
-#include <memory>
 #include <random>
 #include "composite.h"
 
@@ -39,5 +38,6 @@ int main()
 		std::wcout << L'\n';
 	}
 
-	return 0;
+	std::system( "pause" );
+	return EXIT_SUCCESS;
 }
