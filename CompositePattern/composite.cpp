@@ -10,8 +10,8 @@ Leaf1::Leaf1( int value )
 
 void Leaf1::traverse()
 {
-	std::wcout << L"Leaf1:"
-		<< m_value << L' ';
+	std::cout << L"Leaf1:"
+		<< m_value << ' ';
 }
 
 Leaf2::Leaf2( int value )
@@ -21,8 +21,8 @@ Leaf2::Leaf2( int value )
 
 void Leaf2::traverse()
 {
-	std::wcout << L"Leaf2:"
-		<< m_value << L' ';
+	std::cout << "Leaf2:"
+		<< m_value << ' ';
 }
 
 Leaf3::Leaf3( int value )
@@ -32,14 +32,14 @@ Leaf3::Leaf3( int value )
 
 void Leaf3::traverse()
 {
-	std::wcout << L"Leaf3:"
-		<< m_value << L' ';
+	std::cout << "Leaf3:"
+		<< m_value << ' ';
 }
 
 
 Composite::Composite( Composite&& rhs ) noexcept
 	:
-	m_children{ std::move( rhs.m_children ) }
+	m_children{std::move( rhs.m_children )}
 {}
 
 Composite& Composite::operator=( Composite&& rhs ) noexcept
