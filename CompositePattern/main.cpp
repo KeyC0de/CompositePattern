@@ -1,6 +1,9 @@
 #include <iostream>
 #include <random>
 #include "composite.h"
+#if defined _DEBUG && !defined NDEBUG
+#	include <vld.h>
+#endif
 
 
 int main()
@@ -23,14 +26,14 @@ int main()
 	}
 	
 	// create another composite and add leaves to it
-	auto compositeSlave = std::make_unique<Composite>();
+	auto compositeChild = std::make_unique<Composite>();
 	for ( int i = 0; i < 4; ++i )
 	{
 		randInt = distrInt( rneng );
-		compositeSlave->add( std::make_unique<Leaf3>( randInt ) );
+		compositeChild->add( std::make_unique<Leaf3>( randInt ) );
 	}
 	// make the composite a child of another composite
-	composites[4].add( std::move( compositeSlave ) );
+	composites[4].add( std::move( compositeChild ) );
 
 	// traverse the hierarchy
 	for ( auto& elem : composites )

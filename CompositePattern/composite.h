@@ -3,11 +3,12 @@
 #include <vector>
 
 
-// a common interface for all the leaves as well as the Composite
+// a common interface for all the leaves as well as the Composite(s)
 class IComponent
 {
 public:
 	virtual void traverse() = 0;
+	virtual ~IComponent() = default;
 };
 
 
@@ -42,7 +43,7 @@ public:
 class Composite
 	: public IComponent
 {
-	std::vector<std::unique_ptr<IComponent>> m_children;
+	std::vector<std::unique_ptr<IComponent>> m_pChildren;
 public:
 	Composite() = default;
 	virtual ~Composite() = default;
@@ -50,6 +51,7 @@ public:
 	Composite& operator=( const Composite& rhs ) = delete;
 	Composite( Composite&& rhs ) noexcept;
 	Composite& operator=( Composite&& rhs ) noexcept;
+
 	// supply unique_ptr s of IComponents here
 	void add( std::unique_ptr<IComponent> element );
 	void traverse() override;
