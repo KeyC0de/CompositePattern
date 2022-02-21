@@ -2,7 +2,8 @@
 #include <random>
 #include "composite.h"
 #if defined _DEBUG && !defined NDEBUG
-#	include <vld.h>
+#	pragma comment( lib, "C:/Program Files (x86)/Visual Leak Detector/lib/Win64/vld.lib" )
+#	include <C:/Program Files (x86)/Visual Leak Detector/include/vld.h>
 #endif
 
 
@@ -32,7 +33,7 @@ int main()
 		randInt = distrInt( rneng );
 		compositeChild->add( std::make_unique<Leaf3>( randInt ) );
 	}
-	// make the composite a child of another composite
+	// make the composite a child of composite[4]
 	composites[4].add( std::move( compositeChild ) );
 
 	// traverse the hierarchy
@@ -42,6 +43,8 @@ int main()
 		std::cout << '\n';
 	}
 
-	std::system( "pause" );
+#if defined _DEBUG && !defined NDEBUG
+	while ( !getchar() );
+#endif
 	return EXIT_SUCCESS;
 }

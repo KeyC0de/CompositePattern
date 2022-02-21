@@ -18,6 +18,7 @@ class Leaf1
 	int m_value;
 public:
 	Leaf1( int value );
+
 	void traverse() override;
 };
 
@@ -27,6 +28,7 @@ class Leaf2
 	int m_value;
 public:
 	Leaf2( int value );
+
 	void traverse() override;
 };
 
@@ -36,6 +38,7 @@ class Leaf3
 	int m_value;
 public:
 	Leaf3( int value );
+
 	void traverse() override;
 };
 
@@ -52,7 +55,6 @@ public:
 	Composite( Composite&& rhs ) noexcept;
 	Composite& operator=( Composite&& rhs ) noexcept;
 
-	// supply unique_ptr s of IComponents here
 	void add( std::unique_ptr<IComponent> element );
 	void traverse() override;
 };

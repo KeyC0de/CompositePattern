@@ -2,7 +2,6 @@
 #include "composite.h"
 
 
-// a common interface for all the leaves as well as the Composite
 Leaf1::Leaf1( int value )
 	:
 	m_value(value)
